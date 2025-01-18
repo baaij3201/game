@@ -139,7 +139,7 @@ char Map[100][100]={
 	"输入q开启/关闭快速加载",
 	"输入r查看快速加载状态"
 },c,*cz,k;
-string Set="";
+string Set="";                   
 string password="Xuls@1230",jdt=">>>>>>>>>>>>>>>>>>>>>>>";
 bool win,sl=false,rn=false,fast=false,keyu=false,keya=false; 
 int i=1,j=1,t=0,money=100,dy=1,n1=0,n2=0,cs=0,kfz=-1,lai=5,dcs=0,ycs=0,ksm=0,x1=-1,x2=-1,fsm=0;
@@ -494,7 +494,7 @@ void dajia(char lx){
 	double jxl=t/5,jgj=t/6,jfy=t/7,dxl,dgj,dfy;
 	int kez=rand()%5;
 	string s="敌人被你毒的不轻，损失了35%的血！\n敌人正在恢复，这一轮他没有攻击！\n",dr[5]={"老师","校霸","教导主任","校长","保安"},s2="校长来了，成败在此一举！\n",s3="校长被你干掉了，你统治了学校！\n",s4="你被你毒的不轻，损失了35%的血！\n你正在恢复，这一轮他没有攻击！\n";
-	int mr[5]={30,50,100,-1,200};
+	int mr[5]={45,60,125,-1,270};
 	int k,ren;
 	if(lx=='T'){
 		xz=false;
@@ -576,7 +576,7 @@ void dajia(char lx){
 				system("cls");
 				xl*=0.65;
 				gj*=0.9;
-				fy*=0.85;
+				fy*=0.9;
 			}
 			else{
 				dxl-=max(0.0,gj*1.53-dfy*1.32)+rand()%3;
@@ -719,7 +719,7 @@ int main(){
 	srand(time(0));
 	char a;
 	string s;
-	cout<<"输入1开始\n输入q开启/关闭快速加载\n输入r查看快速加载状态\n输入z查看更新日志\n输入t看源码（若有）\n输入s查看支持的配置（现在你打开了本程序说明配置够）\n（但看一下固然好，以便分享）\n输入u反馈bug\n";
+	cout<<"输入1开始\n输入q开启/关闭快速加载\n输入r查看快速加载状态\n输入z查看更新日志\n输入t开源\n输入s查看支持的配置（现在你打开了本程序说明配置够）\n（但看一下固然好，以便分享）\n输入u反馈bug\n";
 	a=getch();
 	if(a=='G'||a=='g') bosskey();
 	if(a==-32) getch();
@@ -783,8 +783,7 @@ int main(){
 					else if(*cz=='@'){xl+=rand()%20;Map[i][j]='.';*cz='I';i--;n1--;}
 					else if(*cz=='Z'){ar(0);}
 					else if(*cz=='U'){keyu=true;*cz='I';Map[i][j]='.';i--;}
-					else if(*cz=='A'){keyu=true;*cz='I';Map[i][j]='.';i--;}
-					else if(*cz=='P'){keya=true;*cz='I';Map[i][j]='.';i--;}
+					else if(*cz=='A'){keya=true;*cz='I';Map[i][j]='.';i--;}
 					else if(*cz=='['){if(keyu){*cz='I';Map[i][j]='.';i--;}}
 					else if(*cz==']'){if(keya){*cz='I';Map[i][j]='.';i--;}}
 				}
@@ -808,8 +807,7 @@ int main(){
 					else if(*cz=='@'){xl+=rand()%20;Map[i][j]='.';*cz='I';j--;n1--;}
 					else if(*cz=='Z'){ar(0);}
 					else if(*cz=='U'){keyu=true;*cz='I';Map[i][j]='.';j--;}
-					else if(*cz=='A'){keyu=true;*cz='I';Map[i][j]='.';j--;}
-					else if(*cz=='P'){keya=true;*cz='I';Map[i][j]='.';j--;}
+					else if(*cz=='A'){keya=true;*cz='I';Map[i][j]='.';j--;}
 					else if(*cz=='['){if(keyu){*cz='I';Map[i][j]='.';j--;}}
 					else if(*cz==']'){if(keya){*cz='I';Map[i][j]='.';j--;}}
 				}
@@ -833,8 +831,7 @@ int main(){
 					else if(*cz=='@'){xl+=rand()%25;Map[i][j]='.';*cz='I';i++;n1--;}
 					else if(*cz=='Z'){ar(0);}
 					else if(*cz=='U'){keyu=true;*cz='I';Map[i][j]='.';i++;}
-					else if(*cz=='A'){keyu=true;*cz='I';Map[i][j]='.';i++;}
-					else if(*cz=='P'){keya=true;*cz='I';Map[i][j]='.';i++;}
+					else if(*cz=='A'){keya=true;*cz='I';Map[i][j]='.';i++;}
 					else if(*cz=='['){if(keyu){*cz='I';Map[i][j]='.';i++;}}
 					else if(*cz==']'){if(keya){*cz='I';Map[i][j]='.';i++;}}
 				}
@@ -858,8 +855,7 @@ int main(){
 					else if(*cz=='@'){xl+=rand()%25;Map[i][j]='.';*cz='I';j++;n1--;}
 					else if(*cz=='Z'){ar(0);}
 					else if(*cz=='U'){keyu=true;*cz='I';Map[i][j]='.';j++;}
-					else if(*cz=='A'){keyu=true;*cz='I';Map[i][j]='.';j++;}
-					else if(*cz=='P'){keya=true;*cz='I';Map[i][j]='.';j++;}
+					else if(*cz=='A'){keya=true;*cz='I';Map[i][j]='.';j++;}
 					else if(*cz=='['){if(keyu){*cz='I';Map[i][j]='.';j++;}}
 					else if(*cz==']'){if(keya){*cz='I';Map[i][j]='.';j++;}}
 				}
@@ -968,7 +964,7 @@ int main(){
 									if(k=="fy") cout<<fy;
 									if(k=="xl") cout<<xl;
 								}
-								else if(k=="win"||k=="sl"||k=="fast"){
+								else if(k=="win"||k=="sl"||k=="fast"||k=="keya"){
 									cout<<"bool型变量"<<k<<"的值：";
 									if(k=="win"){
 										if(win) cout<<"true";
@@ -980,6 +976,10 @@ int main(){
 									}
 									if(k=="fast"){
 										if(fast) cout<<"true";
+										else cout<<"false";
+									}
+									if(k=="keya"){
+										if(keya) cout<<"true";
 										else cout<<"false";
 									}
 								}
@@ -1131,14 +1131,11 @@ int main(){
 	else if(a=='t'||a=='T'){
 		tq:
 		system("cls");
-		cout<<"1.控制台提取(装B),2.直接打开文件(推荐)\n";
+		cout<<"1.github,2.luogu\n";
 		char q;
 		q=getch();
-		if(q=='1'){system("start 自制小游戏提取代码.exe");}
-		else if(q=='2'){
-			system("start 自制小游戏.cpp");
-			system("start 自制小游戏.md");	
-		}
+		if(q=='1'){system("start https://github.com/baaij3201/game/");}
+		else if(q=='2'){system("start https://www.luogu.com/paste/oqtohrug");}
 		else{goto tq;}
 		system("cls");
 		goto yh;
@@ -1164,3 +1161,6 @@ int main(){
 	else{system("cls");goto yh;}
 	return 0;
 }
+//项目地址：https://github.com/baaij3201/game/
+//这个网站快亿点点：https://gitcode.com/bajia2013/Schoolchaos
+//再不济：https://www.luogu.com/paste/oqtohrug （一般不推荐）
