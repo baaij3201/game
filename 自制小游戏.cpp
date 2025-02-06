@@ -1,5 +1,5 @@
-#include"game.h"
-#pragma message("game version is 5.1.1")
+#include "game.h"
+#pragma message("game version is 5.2.0")
 using namespace std;
 void updj(){
 	system("cls");
@@ -50,6 +50,8 @@ void updj(){
 	cout<<"5.1.1:修复bug\n";
 	getch();
 	cout<<"顺序好像反了qwq\n";
+	getch();
+	cout << "5.2.0:优化一系列算法\n";
 	getch();
 	system("cls");
 }
@@ -111,7 +113,7 @@ void bosskey(){
 		system("cls");
 		exit(0);
 	}
-	system("title 学校大乱斗v5.1.1");
+	system("title 学校大乱斗v5.2.0");
 	system("cls");
 	return;
 }
@@ -133,7 +135,7 @@ char Map[100][100]={
 	"#PZJJJ#..........S.....................#JL#......A#",
 	"###################################################",
 	"T:老师，B：校霸，#：墙，$：钱，Z:作者",
-	"I：我，L：实验室，C：黑市，@：免费的血",
+	"I：我，L：五金店，C：黑市，@：免费的血",
 	"P：校长，J：教导主任，K：作者的杀手，",
 	"S：保安 U&A:金钥匙 []:上锁的门",
 	"输入q开启/关闭快速加载",
@@ -142,8 +144,8 @@ char Map[100][100]={
 string Set="";                   
 string password="Xuls@1230",jdt=">>>>>>>>>>>>>>>>>>>>>>>";
 bool win,sl=false,rn=false,fast=false,keyu=false,keya=false; 
-int i=1,j=1,t=0,money=100,dy=1,n1=0,n2=0,cs=0,kfz=-1,lai=5,dcs=0,ycs=0,ksm=0,x1=-1,x2=-1,fsm=0;
-double gj=95,fy=70,xl=1350;
+int i=1,j=1,t=0,money=100,dy=1,n1=0,n2=0,cs=0,kfz=-1,lai=5,dcs=0,ycs=0,ksm=0,x1=-1,x2=-1,fsm=0,ddy=2;
+double gj=110,fy=75,xl=1350;
 void color(int x,int y){
 	HANDLE handle=GetStdHandle(STD_OUTPUT_HANDLE);
 	switch(x){
@@ -205,6 +207,10 @@ void xhxcolor(int x){
 	}
 }
 void zz(){
+	puts("老板：你来找我打什么？");
+	getch();
+	puts("武器，盔甲，还是钥匙？");
+	getch();
 	int a=114514;
 	while(a){
 		
@@ -494,7 +500,7 @@ void dajia(char lx){
 	double jxl=t/5,jgj=t/6,jfy=t/7,dxl,dgj,dfy;
 	int kez=rand()%5;
 	string s="敌人被你毒的不轻，损失了35%的血！\n敌人正在恢复，这一轮他没有攻击！\n",dr[5]={"老师","校霸","教导主任","校长","保安"},s2="校长来了，成败在此一举！\n",s3="校长被你干掉了，你统治了学校！\n",s4="你被你毒的不轻，损失了35%的血！\n你正在恢复，这一轮他没有攻击！\n";
-	int mr[5]={45,60,125,-1,270};
+	int mr[5]={55,65,130,-1,280};
 	int k,ren;
 	if(lx=='T'){
 		xz=false;
@@ -566,7 +572,8 @@ void dajia(char lx){
 		cout<<"1：普通攻击，2：毒药攻击，3：逃跑\n";
 		k=getch();
 		if(k=='1'){
-			if(rand()%8==0){
+			if(rand()%8==0&&ddy){
+				ddy--;
 				color(3,0);
 				for(int i=0;i<s.size();i++){
 					cout<<s4[i];
@@ -574,13 +581,13 @@ void dajia(char lx){
 				}
 				color(7,0);
 				system("cls");
-				xl*=0.65;
+				xl*=0.8;
 				gj*=0.9;
 				fy*=0.9;
 			}
 			else{
-				dxl-=max(0.0,gj*1.53-dfy*1.32)+rand()%3;
-				xl-=max(0.0,dgj*1.53-fy*1.32)+rand()%3;	
+				dxl-=max(2,gj*1.53-dfy*1.32)+rand()%3;
+				xl-=max(4,dgj*1.52-fy*1.35+ren-((xl>1600)?(xl/300):(6))) + rand() % 3;
 			}
 			
 		}
@@ -697,7 +704,7 @@ void dajia(char lx){
 }
 int main(){
 	system("mode con lines=30 cols=90"); 
-	system("title 学校大乱斗v5.1.1");
+	system("title 学校大乱斗v5.2.0");
 	char et[15];
 	fstream in("set.ini");
 	in.getline(et,10);
@@ -743,7 +750,7 @@ int main(){
 			gotoxy(0,0);
 			if(a=='G'||a=='g') bosskey();
 			if(xl<0||sl){goto fh;}
-			cout<<fixed<<setprecision(3)<<"血量："<<xl<<"   攻击："<<gj<<"   防御："<<fy<<"   钱："<<money<<"元   "<<"毒药瓶数："<<dy<<"瓶"<<'\n';
+			cout<<fixed<<setprecision(3)<<"血量："<<xl<<"   攻击："<<gj<<"   防御："<<fy<<"   钱："<<money<<"元   "<<"毒药瓶数："<<dy<<"瓶 按空格键重开"<<'\n';
 			for(int i=0;i<22;i++){
 				puts(Map[i]);
 			}
@@ -760,6 +767,19 @@ int main(){
 				cout<<"快速加载配置为"<<fast<<'\n';
 				getch();
 				system("cls");
+			}
+			if (c == ' ') {
+				if (MessageBox(NULL, "确定重启吗?", "qwq", MB_YESNO | MB_ICONWARNING) == IDYES) {
+					MessageBox(NULL, "确如果没成功，可手动重启！", "qwq", MB_OK | MB_ICONINFORMATION);
+					FILE* fp = freopen("temp.bat", "w", stdout);
+					cout << "taskkill /f /im 学校大乱斗.exe\n";
+					cout << "start 学校大乱斗.exe\n";
+					cout << "del %0\n";
+					cout << "exit\n";
+					fclose(fp);
+					system("start temp.bat");
+					exit(0);
+				}
 			}
 			if(c==-32){
 				c=getch();
@@ -877,11 +897,11 @@ int main(){
 			system("cls");
 			t++;
 			if(kfz==-1){
-				xl*=0.998;
-				gj*=0.998;
-				fy*=0.998;
+				xl*=0.997;
+				gj*=0.999;
+				fy*=0.999;
 			}
-			
+			ddy += (rand() % 40 == 0)?(1):(0);
 		}
 	}
 	else if(a=='0'){
@@ -1065,9 +1085,10 @@ int main(){
 							if(MessageBox(NULL,"确定重启吗？重启后密码，变量会重置","开发者选项",MB_YESNO|MB_ICONWARNING)==IDYES){
 								MessageBox(NULL,"确如果没成功，可手动重启！","开发者选项",MB_OK|MB_ICONINFORMATION);
 								FILE* fp=freopen("temp.bat","w",stdout);
-								cout<<"taskkill /f /im 自制小游戏.exe\n";
-								cout<<"start 自制小游戏.exe\n";
+								cout<<"taskkill /f /im 学校大乱斗.exe\n";
+								cout<<"start 学校大乱斗.exe\n";
 								cout<<"del %0\n";
+								cout<<"exit\n";
 								fclose(fp);
 								system("start temp.bat");
 								exit(0);
@@ -1144,11 +1165,11 @@ int main(){
 		system("cls");
 		cout<<"目前只有win版本\n";
 		getch();
-		cout<<"目前实测支持winxp-win11 \n";
+		cout<<"目前实测支持winxp-win11(64位版支持win8-win11) \n";
 		getch();
 		cout<<"上古版本系统不支持\n";
 		getch();
-		cout<<"最低x86架构\n";
+		cout<<"x86版仅支持x86及以上（x64请运行x64版）架构\n";
 		getch();
 		system("cls");
 		goto yh;
