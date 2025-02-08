@@ -1,5 +1,5 @@
 #include "game.h"
-#pragma message("game version is 5.2.0")
+#pragma message("game version is 6.0.0")
 using namespace std;
 void updj(){
 	system("cls");
@@ -49,9 +49,11 @@ void updj(){
 	getch();
 	cout<<"5.1.1:修复bug\n";
 	getch();
-	cout<<"顺序好像反了qwq\n";
+	cout<<"5.2.0:优化一系列算法\n";
 	getch();
-	cout << "5.2.0:优化一系列算法\n";
+	cout << "6.0.0:增加了叨\n";
+	getch();
+	cout << "顺序好像反了qwq\n";
 	getch();
 	system("cls");
 }
@@ -65,14 +67,6 @@ string getpas(){
 			if(k.size()>0){
 				k.erase(k.size()-1, 1);
 				system("cls");
-				if(t){
-					for(int i=0;i<k.size();i++){
-						cout<<'*';
-					}
-				} 
-				else{
-					cout<<k;
-				}
 			}
 		}
 		else if(c=='\r'){
@@ -113,7 +107,7 @@ void bosskey(){
 		system("cls");
 		exit(0);
 	}
-	system("title 学校大乱斗v5.2.0");
+	system("title 学校大乱斗v6.0.0");
 	system("cls");
 	return;
 }
@@ -142,9 +136,9 @@ char Map[100][100]={
 	"输入r查看快速加载状态"
 },c,*cz,k;
 string Set="";                   
-string password="Xuls@1230",jdt=">>>>>>>>>>>>>>>>>>>>>>>";
+string password="Xuls@1230",jdt=">>>>>>>>>>>>>>>>>>>>>>>>>";
 bool win,sl=false,rn=false,fast=false,keyu=false,keya=false; 
-int i=1,j=1,t=0,money=100,dy=1,n1=0,n2=0,cs=0,kfz=-1,lai=5,dcs=0,ycs=0,ksm=0,x1=-1,x2=-1,fsm=0,ddy=2;
+int i=1,j=1,t=0,money=100,dy=1,n1=0,n2=0,cs=0,kfz=-1,lai=5,dcs=0,ycs=0,ksm=0,x1=-1,x2=-1,fsm=0,ddy=2,xdao=0,xdaom=3;
 double gj=110,fy=75,xl=1350;
 void color(int x,int y){
 	HANDLE handle=GetStdHandle(STD_OUTPUT_HANDLE);
@@ -328,6 +322,7 @@ void gm(){
 		puts("|5.圣剑（攻击力+40）                       |价格：180元|");
 		puts("|6.铁铠（防御力+15）                       |价格：40元 |");
 		puts("|7.防弹衣（防御力+35）                     |价格：120元|");
+		puts("|8.小叨（一次性用品，神助攻）              |价格：160元|");
 		puts("--------------------------------------------------------");
 		a=getch();
 		if(a==-32){
@@ -394,6 +389,16 @@ void gm(){
 			}
 			else if(fsm>1) cout<<"装备良好无需购买";
 			else puts("钱不够！");
+		}
+		else if (a == '8') {
+			if (money >= 180 && xdaom) {
+				puts("购买完成！");
+				xdao++;
+				money -= 160;
+				xdaom--;
+			}
+			else if (sj) puts("钱不够！");
+			else puts("卖光了。。。");
 		}
 		else if(a=='g'||a=='G'){
 			bosskey();
@@ -499,7 +504,7 @@ void dajia(char lx){
 	system("cls");
 	double jxl=t/5,jgj=t/6,jfy=t/7,dxl,dgj,dfy;
 	int kez=rand()%5;
-	string s="敌人被你毒的不轻，损失了35%的血！\n敌人正在恢复，这一轮他没有攻击！\n",dr[5]={"老师","校霸","教导主任","校长","保安"},s2="校长来了，成败在此一举！\n",s3="校长被你干掉了，你统治了学校！\n",s4="你被你毒的不轻，损失了35%的血！\n你正在恢复，这一轮他没有攻击！\n";
+	string s="敌人被你毒的不轻，损失了35%的血！\n敌人正在恢复，这一轮他没有攻击！\n",dr[5]={"老师","校霸","教导主任","校长","保安"},s2="校长来了，成败在此一举！\n",s3="校长被你干掉了，你统治了学校！\n",s4="你被你毒的不轻，损失了35%的血！\n你正在恢复，这一轮他没有攻击！\n",s5="叨很好使，敌人鲜血直流\n",s6="敌人有亿点点傻，竟然把叨拔了出来，狗带了\n";
 	int mr[5]={55,65,130,-1,280};
 	int k,ren;
 	if(lx=='T'){
@@ -569,7 +574,9 @@ void dajia(char lx){
 		shuru:
 		system("cls");
 		color(1,0);cout<<fixed<<setprecision(3)<<dr[ren]<<"剩余血量：";color(0,7);cout<<dxl;color(1,0);cout<<"\n我剩于血量（战时）：";color(7,0);cout<<xl<<'\n';
-		cout<<"1：普通攻击，2：毒药攻击，3：逃跑\n";
+		cout<<"1：普通攻击，2：毒药攻击，3：逃跑";
+		if (xdao) cout << "4：拔叨相助";
+		cout << '\n';
 		k=getch();
 		if(k=='1'){
 			if(rand()%8==0&&ddy){
@@ -628,6 +635,34 @@ void dajia(char lx){
 				cout<<"逃跑失败！\n";
 				dxl+=10;
 				xl-=dgj/3;
+			}
+		}
+		else if (k == '4') {
+			if (xdao) {
+				xdao--;
+				if (rand() % 5 == 0) {
+					cout << "可惜你的叨被夺过去了\n";
+					xl -= dgj * 1.5 + 60;
+				}
+				else{
+					for (int i = 0; i < s5.size(); i++) {
+						cout << s5[i];
+						Sleep(300 * (!fast));
+					}
+					dxl -= gj * 1.5 + 60;
+					if (rand() % 8 == 0) {
+						for (int i = 0; i < s6.size(); i++) {
+							cout << s6[i];
+							Sleep(300 * (!fast));
+						}
+						dxl = 0;
+						xl += 10;
+					}
+				}
+			}
+			else {
+				cout << "可惜你没叨\n";
+				xl -= dgj - 1.5;
 			}
 		}
 		else if(k=='g'||k=='G'){
@@ -704,7 +739,7 @@ void dajia(char lx){
 }
 int main(){
 	system("mode con lines=30 cols=90"); 
-	system("title 学校大乱斗v5.2.0");
+	system("title 学校大乱斗v6.0.0");
 	char et[15];
 	fstream in("set.ini");
 	in.getline(et,10);
@@ -739,7 +774,7 @@ int main(){
 				if(j<(1.0*jdt.size())/5) color(1,0);
 				else if(j<(1.0*jdt.size())*0.8) color(5,0);
 				else color(3,0);
-				if(jdt.size()-j<4) Sleep(1050*(!fast));
+				if(jdt.size()-j<4) Sleep(900*(!fast));
 				cout<<jdt[j];
 			}
 			Sleep(150*(!fast));
@@ -1183,5 +1218,5 @@ int main(){
 	return 0;
 }
 //项目地址：https://github.com/baaij3201/game/
-//这个网站快亿点点：https://gitcode.com/bajia2013/Schoolchaos
-//再不济：https://www.luogu.com/paste/oqtohrug （一般不推荐）
+//这个网站快亿点点：https://www.luogu.com/paste/oqtohrug
+//再不济： https://gitcode.com/bajia2013/Schoolchaos（一般不推荐）（已摆烂）
