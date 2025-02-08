@@ -4,7 +4,7 @@
 #define dn(VK_NONAME) keybd_event(VK_NONAME,0,0,0)
 #define up(VK_NONAME) keybd_event(VK_NONAME,0,0,0)
 #define ps(VK_NONAME) up(VK_NONAME),dn(VK_NONAME)
-#define mgb(a,b,c) MessageBox(NULL,a,b,c)
+#define mgb(a,b,c) MessageBox(NULL,_T(a),_T(b),c)
 //#include"stdc++.h"
 #include<windows.h>
 #include<algorithm>
