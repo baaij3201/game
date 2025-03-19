@@ -737,7 +737,7 @@ void dajia(char lx){
 		else exit(0);
 	}
 }
-int main(){
+int main(int argc, char* argv[], char* envp[]){
 	system("mode con lines=30 cols=90"); 
 	system("title 学校大乱斗v6.0.0");
 	char et[15];
@@ -757,11 +757,41 @@ int main(){
 		getch();
 		return 0;
 	}
+	if (argc > 1) {
+		for (int i = 1; i < argc; i++) {
+			if (strcmp(argv[i] , "/?")==0) {
+				cout << "qwq";
+				getch();
+			}
+			else if (strcmp(argv[i], "/s") == 0) {
+				break;
+			}
+			else if (strcmp(argv[i], "/klb") == 0) {
+				if (mgb("真的吗","qwq",MB_YESNO) == IDYES) {
+					dajia('K');
+				} 
+			}
+			else if (strcmp(argv[i], "/q") == 0) {
+				fast = true;
+			}
+			else {
+				cout << "\n啥，你知道这玩意有命令行接口？\n";
+				getch();
+				cout << "\n可是你好像不会用\n";
+				getch();
+				cout << "\n /？查看帮助, /s启动，/klb自己吓自己 /q开启快速加载\n";
+				getch();
+				system("cls");
+				break;
+			}
+		}
+	}
+	system("cls");
 	yh:
 	srand(time(0));
 	char a;
 	string s;
-	cout<<"输入1开始\n输入q开启/关闭快速加载\n输入r查看快速加载状态\n输入z查看更新日志\n输入t开源\n输入s查看支持的配置（现在你打开了本程序说明配置够）\n（但看一下固然好，以便分享）\n输入u反馈bug\n";
+	cout<<"输入1开始\n输入q开启/关闭快速加载\n输入r查看快速加载状态\n输入z查看更新日志\n输入t开源\n输入s查看支持的配置（现在你打开了本程序说明配置够）\n（但看一下固然好，以便分享）\n输入u提建议/反馈bug\n";
 	a=getch();
 	if(a=='G'||a=='g') bosskey();
 	if(a==-32) getch();
@@ -1187,11 +1217,11 @@ int main(){
 	else if(a=='t'||a=='T'){
 		tq:
 		system("cls");
-		cout<<"1.github,2.luogu\n";
+		cout<<"1.github,2.gitcode\n";
 		char q;
 		q=getch();
 		if(q=='1'){system("start https://github.com/baaij3201/game/");}
-		else if(q=='2'){system("start https://www.luogu.com/paste/oqtohrug");}
+		else if(q=='2'){system("https://gitcode.com/bajia2013/Schoolchaos");}
 		else{goto tq;}
 		system("cls");
 		goto yh;
@@ -1204,13 +1234,20 @@ int main(){
 		getch();
 		cout<<"上古版本系统不支持\n";
 		getch();
-		cout<<"x86版仅支持x86及以上（x64请运行x64版）架构\n";
+		cout<<"自行编译，目前代码支持32位\n";
 		getch();
 		system("cls");
 		goto yh;
 	}
 	else if(a=='u'||a=='U'){
-		system("start https://www.luogu.com.cn/article/m5lmtflv");
+		system("cls");
+		cout << "1.github（推荐，可能卡）,2.luogu（备用）\n";
+		char q;
+		q = getch();
+		if (q == '1') { system("start https://github.com/baaij3201/game/issues"); }
+		else if (q == '2') { system("https://www.luogu.com.cn/article/m5lmtflv"); }
+		system("cls");
+		system("start ");
 		system("cls");
 		goto yh;
 	}
@@ -1218,5 +1255,5 @@ int main(){
 	return 0;
 }
 //项目地址：https://github.com/baaij3201/game/
-//这个网站快亿点点：https://www.luogu.com/paste/oqtohrug
 //再不济： https://gitcode.com/bajia2013/Schoolchaos（一般不推荐）（已摆烂）
+//点名luogu关了国际站导致云间贴板不能用
