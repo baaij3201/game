@@ -1,5 +1,5 @@
 #include "game.h"
-#pragma message("game version is 6.0.0")
+#pragma message("game version is 6.0.1")
 using namespace std;
 void updj(){
 	system("cls");
@@ -53,7 +53,7 @@ void updj(){
 	getch();
 	cout << "6.0.0:增加了叨\n";
 	getch();
-	cout << "顺序好像反了qwq\n";
+	cout << "6.0.1增加了是否出口成章\n";
 	getch();
 	system("cls");
 }
@@ -136,7 +136,7 @@ char Map[100][100]={
 	"输入r查看快速加载状态"
 },c,*cz,k;
 string Set="";                   
-string password="123456",jdt=">>>>>>>>>>>>>>>>>>>>>>>>>";
+string password="Xuls@1230",jdt=">>>>>>>>>>>>>>>>>>>>>>>>>";
 bool win,sl=false,rn=false,fast=false,keyu=false,keya=false; 
 int i=1,j=1,t=0,money=100,dy=1,n1=0,n2=0,cs=0,kfz=-1,lai=5,dcs=0,ycs=0,ksm=0,x1=-1,x2=-1,fsm=0,ddy=2,xdao=0,xdaom=3;
 double gj=110,fy=75,xl=1350;
@@ -210,7 +210,16 @@ void zz(){
 		
 	}	
 }
-void sabi(){while(1){MessageBox(NULL,"你个傻逼","傻逼",MB_OK|MB_ICONWARNING);}}
+void sabi() {
+	while (1) {
+		if (SBtools::SB) {
+			mgb("你个傻逼", "傻逼", MB_OK | MB_ICONWARNING);
+		}
+		else {
+			mgb("我真不想出口成章啊", "哎呀", MB_OK | MB_ICONWARNING);
+		}
+	}
+}
 void xg(){
 	gj/=30;
 	fy/=15;
@@ -757,6 +766,7 @@ int main(int argc, char* argv[], char* envp[]){
 		getch();
 		return 0;
 	}
+	SBtools::SB = 0;
 	if (argc > 1) {
 		for (int i = 1; i < argc; i++) {
 			if (strcmp(argv[i] , "/?")==0) {
@@ -774,12 +784,15 @@ int main(int argc, char* argv[], char* envp[]){
 			else if (strcmp(argv[i], "/q") == 0) {
 				fast = true;
 			}
+			else if (strcmp(argv[i], "/sb") == 0) {
+				SBtools::SB = 1;
+			}
 			else {
 				cout << "\n啥，你知道这玩意有命令行接口？\n";
 				getch();
 				cout << "\n可是你好像不会用\n";
 				getch();
-				cout << "\n /？查看帮助, /s启动，/klb自己吓自己 /q开启快速加载\n";
+				cout << "\n /？查看帮助, /s启动，/klb自己吓自己 /q开启快速加载 /sb 指定出口成章\n";
 				getch();
 				system("cls");
 				break;
@@ -791,7 +804,7 @@ int main(int argc, char* argv[], char* envp[]){
 	srand(time(0));
 	char a;
 	string s;
-	cout<<"输入1开始\n输入q开启/关闭快速加载\n输入r查看快速加载状态\n输入z查看更新日志\n输入t开源\n输入s查看支持的配置（现在你打开了本程序说明配置够）\n（但看一下固然好，以便分享）\n输入u提建议/反馈bug\n";
+	cout<<"输入1开始\n输入q开启/关闭快速加载\n输入r查看快速加载状态\n输入z查看更新日志\n输入t开源\n输入s查看支持的配置（现在你打开了本程序说明配置够）\n（但看一下固然好，以便分享）\n输入u提建议/反馈bug\n输入a控制出口成章\n";
 	a=getch();
 	if(a=='G'||a=='g') bosskey();
 	if(a==-32) getch();
@@ -1225,6 +1238,14 @@ int main(int argc, char* argv[], char* envp[]){
 		else{goto tq;}
 		system("cls");
 		goto yh;
+	}
+	else if (a == 'a' || a == 'A') {
+		system("cls");
+		int t;
+		cout << "输入SBtools::SB的值（1=开，0=关）：" ;
+		cin >> t;
+		SBtools::editsb(t);
+		system("cls");
 	}
 	else if(a=='s'||a=='S'){
 		system("cls");
