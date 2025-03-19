@@ -136,7 +136,7 @@ char Map[100][100]={
 	"输入r查看快速加载状态"
 },c,*cz,k;
 string Set="";                   
-string password="Xuls@1230",jdt=">>>>>>>>>>>>>>>>>>>>>>>>>";
+string password="123456",jdt=">>>>>>>>>>>>>>>>>>>>>>>>>";
 bool win,sl=false,rn=false,fast=false,keyu=false,keya=false; 
 int i=1,j=1,t=0,money=100,dy=1,n1=0,n2=0,cs=0,kfz=-1,lai=5,dcs=0,ycs=0,ksm=0,x1=-1,x2=-1,fsm=0,ddy=2,xdao=0,xdaom=3;
 double gj=110,fy=75,xl=1350;
