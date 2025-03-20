@@ -107,7 +107,7 @@ void bosskey(){
 		system("cls");
 		exit(0);
 	}
-	system("title 学校大乱斗v6.0.0");
+	system("title 学校大乱斗v6.0.1");
 	system("cls");
 	return;
 }
@@ -136,7 +136,7 @@ char Map[100][100]={
 	"输入r查看快速加载状态"
 },c,*cz,k;
 string Set="";                   
-string password="Xuls@1230",jdt=">>>>>>>>>>>>>>>>>>>>>>>>>";
+string password="123456",jdt=">>>>>>>>>>>>>>>>>>>>>>>>>";
 bool win,sl=false,rn=false,fast=false,keyu=false,keya=false; 
 int i=1,j=1,t=0,money=100,dy=1,n1=0,n2=0,cs=0,kfz=-1,lai=5,dcs=0,ycs=0,ksm=0,x1=-1,x2=-1,fsm=0,ddy=2,xdao=0,xdaom=3;
 double gj=110,fy=75,xl=1350;
@@ -748,7 +748,7 @@ void dajia(char lx){
 }
 int main(int argc, char* argv[], char* envp[]){
 	system("mode con lines=30 cols=90"); 
-	system("title 学校大乱斗v6.0.0");
+	system("title 学校大乱斗v6.0.1");
 	char et[15];
 	fstream in("set.ini");
 	in.getline(et,10);
@@ -984,8 +984,8 @@ int main(int argc, char* argv[], char* envp[]){
 	}
 	else if(a=='0'){
 		system("cls");
-		if(MessageBox(NULL,"确定是开发者本人吗？","确定是吗？",MB_YESNO)==IDYES&&MessageBox(NULL,"确定是开发者本人吗？","确定是吗？",MB_YESNO|MB_ICONQUESTION)==IDYES&&MessageBox(NULL,"确定是开发者本人吗？","确定是吗？",MB_YESNO|MB_ICONWARNING)==IDYES){
-				MessageBox(NULL,"请输入密码","开发者选项",MB_OK);
+		if(MessageBox(NULL,"目前调试模式（原名：开发者选项）已开放，但不建议非专业用户使用，确定吗？","确定吗？",MB_YESNO)==IDYES){
+				mgb("不妨告诉你，密码我改成123456了，输完密码回车")
 				system("cls");
 				s=getpas();
 				system("cls");
@@ -994,7 +994,7 @@ int main(int argc, char* argv[], char* envp[]){
 					while(1){
 						fh:
 						system("cls");
-						cout<<"输入要干的操作\n1.开挂模式\n2.运行函数\n3.查看变量\n4.修改变量\n5.退出开发者选项\n6.修改密码\n7.重启程序\n8.不带开发者保护的开挂(仅修改属性变量)\n9.禁用程序\n";
+						cout<<"输入要干的操作\n1.开挂模式\n2.运行函数\n5.退出开发者选项\n6.修改密码\n7.重启程序\n8.不带开发者保护的开挂(仅修改属性变量)\n9.禁用程序(kfz型)\n9.禁用程序(daj型)\n";
 						cin>>kfz;
 						if(kfz==1){
 							system("cls");
@@ -1032,8 +1032,7 @@ int main(int argc, char* argv[], char* envp[]){
 								}
 								if(k=="gm") gm();
 								if(k=="sabi"){
-									cout<<"这个函数是死循环，系统为您调用前五次！";
-									for(int i=0;i<5;i++) MessageBox(NULL,"你个傻逼","傻逼",MB_OK|MB_ICONWARNING);
+									cout<<"哈哈，出口成章的东西还是不调用好";
 								}
 								if(k=="xg") xg();
 								if(k=="zz"){
@@ -1046,90 +1045,13 @@ int main(int argc, char* argv[], char* envp[]){
 								}
 							}
 						}
-						if(kfz==3){
+						if (kfz == 3) {
 							system("cls");
-							if(MessageBox(NULL,"确定吗？","开发者选项",MB_YESNO|MB_ICONQUESTION)==IDYES){
-								string k;
-								cout<<"输入变量名";
-								cin>>k;
-								if(k=="jdt"){
-									cout<<"string类型变量"<<k<<"的值：";
-									if(k==jdt) cout<<jdt;
-								}
-								if(k=="gj"||k=="fy"||k=="xl"){
-									cout<<"double型变量"<<k<<"的值：";
-									if(k=="gj") cout<<gj;
-									if(k=="fy") cout<<fy;
-									if(k=="xl") cout<<xl;
-								}
-								else if(k=="win"||k=="sl"||k=="fast"||k=="keya"){
-									cout<<"bool型变量"<<k<<"的值：";
-									if(k=="win"){
-										if(win) cout<<"true";
-										else cout<<"flase";
-									}
-									if(k=="sl"){
-										if(sl) cout<<"true";
-										else cout<<"flase";
-									}
-									if(k=="fast"){
-										if(fast) cout<<"true";
-										else cout<<"false";
-									}
-									if(k=="keya"){
-										if(keya) cout<<"true";
-										else cout<<"false";
-									}
-								}
-								else if(k=="i"||k=="j"||k=="t"||k=="money"||k=="dy"||k=="n1"||k=="n2"||k=="cs"||k=="kfz"||k=="lai"||k=="x1"||k=="y1"){
-									cout<<"int型变量"<<k<<"的值：";
-									if(k=="i") cout<<i;
-									if(k=="j") cout<<j;
-									if(k=="t") cout<<t;
-									if(k=="money") cout<<money;
-									if(k=="dy") cout<<dy;
-									if(k=="n1") cout<<n1;
-									if(k=="n2") cout<<n2;
-									if(k=="cs") cout<<cs;
-									if(k=="kfz") cout<<kfz;
-									if(k=="lai") cout<<lai;
-									if(k=="x1") cout<<x1;
-									if(k=="x2") cout<<x2;
-								}
-								else cout<<"没有找到该变量！\n";
-								Sleep(2000);
-							}
-						}
-						if(kfz==4){
-							system("cls");
-							if(MessageBox(NULL,"确定吗？","开发者选项",MB_YESNO|MB_ICONQUESTION)==IDYES){
-								string k;
-								int c;
-								cout<<"输入变量名\n";
-								cin>>k;
-								cout<<"输入修改的值\n";
-								cin>>c;
-								if(k=="gj") gj=c;
-								else if(k=="fy") fy=c;
-								else if(k=="xl") xl=c;
-								else if(k=="sl") sl=c;
-								else if(k=="win") win=c;
-								else if(k=="i") i=c;
-								else if(k=="j") j=c;
-								else if(k=="t") t=c;
-								else if(k=="money") money=c;
-								else if(k=="dy") dy=c;
-								else if(k=="n1") n1=c;
-								else if(k=="n2") n2=c;
-								else if(k=="cs") cs=c;
-								else if(k=="kfz") kfz=c;
-								else if(k=="lai") lai=c;
-								else if(k=="fast") fast=c;
-								else{
-									cout<<"未找到此变量\n";
-									getch();
-									system("cls");
-								}
+							if (MessageBox(NULL, "确定吗？", "开发者选项", MB_YESNO | MB_ICONWARNING) == IDYES) {
+								FILE* fp = fopen("set.ini", "w");
+								fprintf(fp, "killban");
+								fclose(fp);
+								MessageBox(NULL, "如需解除，请删除set.ini", "开发者选项", MB_OK | MB_ICONASTERISK);
 							}
 						}
 						if(kfz==5){
@@ -1194,6 +1116,7 @@ int main(int argc, char* argv[], char* envp[]){
 								MessageBox(NULL,"如需解除，请删除set.ini","开发者选项",MB_OK|MB_ICONASTERISK);
 							}
 						}
+						
 					}
 				}
 				else sabi();
@@ -1246,6 +1169,7 @@ int main(int argc, char* argv[], char* envp[]){
 		cin >> t;
 		SBtools::editsb(t);
 		system("cls");
+		goto yh;
 	}
 	else if(a=='s'||a=='S'){
 		system("cls");
