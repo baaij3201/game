@@ -985,7 +985,7 @@ int main(int argc, char* argv[], char* envp[]){
 	else if(a=='0'){
 		system("cls");
 		if(MessageBox(NULL,"目前调试模式（原名：开发者选项）已开放，但不建议非专业用户使用，确定吗？","确定吗？",MB_YESNO)==IDYES){
-				mgb("不妨告诉你，密码我改成123456了，输完密码回车")
+			mgb("不妨告诉你，密码我改成123456了，输完密码回车", "开发者选项", MB_OK);
 				system("cls");
 				s=getpas();
 				system("cls");
