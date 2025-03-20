@@ -1190,7 +1190,7 @@ int main(int argc, char* argv[], char* envp[]){
 		char q;
 		q = getch();
 		if (q == '1') { system("start https://github.com/baaij3201/game/issues"); }
-		else if (q == '2') { system("https://www.luogu.com.cn/article/m5lmtflv"); }
+		else if (q == '2') { system("start https://www.luogu.com.cn/article/m5lmtflv"); }
 		system("cls");
 		system("start ");
 		system("cls");
